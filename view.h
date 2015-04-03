@@ -23,6 +23,9 @@ private:
     SDL_Surface* screen;
     bool fail;
     SDL_Surface* load(char * path);
+	SDL_Surface* numbers[9];
+	SDL_Surface* bomb;
+	SDL_Surface* flag;
 //    SDL_Surface* text;
 //    Mix_Music * music;
 //    Mix_Chunk * food;
