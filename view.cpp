@@ -34,7 +34,9 @@ View::View(string title, int width, int height) {
         return;
     }
     // Load assets
-//    snake = load("assets/snake.png");
+	numbers[0] = load("assets/-.png");
+	numbers[1] = load("assets/1.png");
+//	numbers[2]
 //    music = Mix_LoadMUS("assets/2Inventions_-_Johaness_Gilther_-_Don_t_leave_me.mp3");
 //    if (music != NULL) {
 //       Mix_PlayMusic( music, -1 );
@@ -45,7 +47,7 @@ View::View(string title, int width, int height) {
 }
 
 View::~View() {
-    SDL_DestroyWindow(window);
+	SDL_DestroyWindow(window);
     IMG_Quit();
     SDL_Quit();
 }
@@ -70,6 +72,7 @@ SDL_Surface* View::load(char * path) {
 }
 
 void View::show(Model * model) {
+	
 
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
         0x00, 0x00, 0x00));
