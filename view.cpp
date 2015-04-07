@@ -84,17 +84,20 @@ void View::show(Model * model) {
 
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
         0x00, 0x00, 0x00));
-		SDL_Rect dest;
-		
-    for (int i = 0; i < model->8; i++) {
-        for (int j = 0; j < model->8; j++) {
-            dest.x = j * 8;
-            dest.y = i * 8;
-            Cell = model->get(i, j);
-            
-            SDL_BlitSurface( cell[height], NULL, screen, &dest );
-        }
-    }
+
+    SDL_Rect dest;
+	Cell cell;
+
+	for (int i = 0; i < model->height; i++) {
+        for (int j = 0; j < model->width; j++) {
+			dest.x = j * 61;
+            dest.y = i * 61;
+            cell = model->grid[i][j];
+			
+            SDL_BlitSurface( numbers[cell.neighbors], NULL, screen, &dest );
+
+		}
+	}
 
     // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
 
