@@ -36,6 +36,13 @@ View::View(string title, int width, int height) {
     // Load assets
 	numbers[0] = load("assets/-.png");
 	numbers[1] = load("assets/1.png");
+	numbers[2] = load("assets/2.png");
+	numbers[3] = load("assets/3.png");
+	numbers[4] = load("assets/4.png");
+	numbers[5] = load("assets/5.png");
+	numbers[6] = load("assets/6.png");
+	numbers[7] = load("assets/7.png");
+	numbers[8] = load("assets/8.png");
 //	numbers[2]
 //    music = Mix_LoadMUS("assets/2Inventions_-_Johaness_Gilther_-_Don_t_leave_me.mp3");
 //    if (music != NULL) {
@@ -76,6 +83,20 @@ void View::show(Model * model) {
 
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format,
         0x00, 0x00, 0x00));
+
+    SDL_Rect dest;
+	Cell cell;
+
+	for (int i = 0; i < model->height; i++) {
+        for (int j = 0; j < model->width; j++) {
+			dest.x = j * 61;
+            dest.y = i * 61;
+            cell = model->grid[i][j];
+			
+            SDL_BlitSurface( numbers[cell.neighbors], NULL, screen, &dest );
+
+		}
+	}
 
     // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
 

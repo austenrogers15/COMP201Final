@@ -44,7 +44,7 @@ void Model::clearFlag(int row, int col) {
 }
 
 void Model::explore(int row, int col) {
-	
+	grid[row][col].neighbors++;
 }
 
 // Checking whether all mines have been flagged
