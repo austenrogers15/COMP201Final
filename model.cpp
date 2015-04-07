@@ -30,7 +30,7 @@ Model::~Model() {
     }
     delete grid;
 }
-
+//TODO:
 void Model::update() {
 	
 }

@@ -30,7 +30,7 @@ void Controller::loop() {
             case SDL_QUIT:
                 return;
             case SDL_MOUSEBUTTONDOWN:
-                model->explore(e.button.y / 80, e.button.x / 80);
+                model->explore(e.button.y / 8, e.button.x / 8);
                 break;
                 default:
                 break;
