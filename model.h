@@ -1,6 +1,8 @@
 #ifndef _MODEL_H
 #define _MODEL_H
 
+#include <vector>
+
 struct Cell {
 	// Has this cell been examined?
 	bool explored;
@@ -31,6 +33,8 @@ public:
 	Cell ** grid;
 	int width;
 	int height;
+private:
+	std::vector<Cell> neighbors(int row, int col);
 };
 
 #endif

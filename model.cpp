@@ -19,8 +19,26 @@ Model::Model() {
 			grid[i][j].neighbors = 0;
 		}
     }
-	// TODO: randomly place mines .
-	
+	// Randomly place mines .
+	srand(time(0));
+    int otheri, otherj;
+    for (int i = 0; i < 10; i++) {
+		otheri = rand() % height;
+		otherj = rand() % width;
+		// Swap grid[i][j] with grid[otheri][otherj]
+		grid[otheri][otherj].mine = true;
+	}
+	// Bookkeeping for the number of adjacent mines
+    for (int i = 0; i < height; i++) {
+\		for (int j = 0; j < width; j++) {
+			vector<Cell> adjacent = neighbors(i, j);
+			for (int k = 0; k < adjacent.size(); k++) {
+				if (adjacent[k].mine) {
+					grid[i][j].neighbors++;
+				}
+			}
+		}
+	}
 }
 
 // Destructor deletes dynamically allocated memory
@@ -30,6 +48,14 @@ Model::~Model() {
     }
     delete grid;
 }
+
+// Return a vector full of the immediate neighbors of the given cell.
+vector<Cell> neighbors(int row, int col) {
+	vector<Cell> result;
+	// result.push_back();
+	return result;
+}
+
 //TODO:
 void Model::update() {
 	
