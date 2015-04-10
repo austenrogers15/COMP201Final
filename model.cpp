@@ -1,6 +1,7 @@
 #include "model.h"
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 using namespace std;
 
@@ -25,12 +26,11 @@ Model::Model() {
     for (int i = 0; i < 10; i++) {
 		otheri = rand() % height;
 		otherj = rand() % width;
-		// Swap grid[i][j] with grid[otheri][otherj]
 		grid[otheri][otherj].mine = true;
 	}
 	// Bookkeeping for the number of adjacent mines
     for (int i = 0; i < height; i++) {
-\		for (int j = 0; j < width; j++) {
+		for (int j = 0; j < width; j++) {
 			vector<Cell> adjacent = neighbors(i, j);
 			for (int k = 0; k < adjacent.size(); k++) {
 				if (adjacent[k].mine) {
