@@ -49,13 +49,6 @@ Model::~Model() {
     delete grid;
 }
 
-// Return a vector full of the immediate neighbors of the given cell.
-vector<Cell> neighbors(int row, int col) {
-	vector<Cell> result;
-	// result.push_back();
-	return result;
-}
-
 //TODO:
 void Model::update() {
 	

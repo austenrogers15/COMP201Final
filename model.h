@@ -34,7 +34,18 @@ public:
 	int width;
 	int height;
 private:
-	std::vector<Cell> neighbors(int row, int col);
+	std::vector<Cell> neighbors(int row, int col) {
+		using namespace std;
+		vector<Cell> result;
+		for (int i = row - 1; i <= row + 1; i++) {
+			for (int j = col - 1; j <= col + 1; j++) {
+				if (i != j && j < width && i < height && j >= 0 && i >= 0) {
+					result.push_back(grid[i][j]);
+				}
+			}
+		}
+		return result;
+	}
 };
 
 #endif
