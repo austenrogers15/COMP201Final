@@ -30,7 +30,7 @@ Model::Model() {
 	}
 	// Bookkeeping for the number of adjacent mines
     for (int i = 0; i < height; i++) {
-\		for (int j = 0; j < width; j++) {
+		for (int j = 0; j < width; j++) {
 			vector<Cell> adjacent = neighbors(i, j);
 			for (int k = 0; k < adjacent.size(); k++) {
 				if (adjacent[k].mine) {
@@ -47,13 +47,6 @@ Model::~Model() {
         delete grid[i];
     }
     delete grid;
-}
-
-// Return a vector full of the immediate neighbors of the given cell.
-vector<Cell> neighbors(int row, int col) {
-	vector<Cell> result;
-	// result.push_back();
-	return result;
 }
 
 //TODO:
