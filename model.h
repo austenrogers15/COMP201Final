@@ -4,6 +4,8 @@
 #include <vector>
 
 struct Cell {
+	int row;
+	int col;
 	// Has this cell been examined?
 	bool explored;
 	// Has this cell been flagged?
@@ -26,7 +28,6 @@ public:
     // TODO: Put your stuff here
 	void update();
 	void flagMine(int row, int col);
-	void clearFlag(int row, int col);
 	void explore(int row, int col);
 	
 	// How many mines are there nearby?
@@ -39,7 +40,7 @@ private:
 		vector<Cell> result;
 		for (int i = row - 1; i <= row + 1; i++) {
 			for (int j = col - 1; j <= col + 1; j++) {
-				if (i != j && j < width && i < height && j >= 0 && i >= 0) {
+				if (j < width && i < height && j >= 0 && i >= 0) {
 					result.push_back(grid[i][j]);
 				}
 			}

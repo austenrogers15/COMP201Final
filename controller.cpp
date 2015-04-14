@@ -30,7 +30,11 @@ void Controller::loop() {
             case SDL_QUIT:
                 return;
             case SDL_MOUSEBUTTONDOWN:
-                model->explore(e.button.y / 61, e.button.x / 61);
+				if (e.button.button == SDL_BUTTON_LEFT) {
+					model->explore(e.button.y / 61, e.button.x / 61);
+				} else if (e.button.button == SDL_BUTTON_RIGHT) {
+					model->flagMine(e.button.y / 61, e.button.x / 61);
+				}
                 break;
                 default:
                 break;

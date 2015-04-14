@@ -18,6 +18,8 @@ Model::Model() {
 			grid[i][j].flagged = false;
 			grid[i][j].mine = false;
 			grid[i][j].neighbors = 0;
+			grid[i][j].row = i;
+			grid[i][j].col = j;
 		}
     }
 	// Randomly place mines .
@@ -34,7 +36,7 @@ Model::Model() {
 			vector<Cell> adjacent = neighbors(i, j);
 			for (int k = 0; k < adjacent.size(); k++) {
 				if (adjacent[k].mine) {
-					grid[i][j].neighbors = grid[i][j].explored;
+					grid[i][j].neighbors++;
 				}
 			}
 		}
@@ -54,19 +56,22 @@ void Model::update() {
 	
 }
 
+// Flag and clear
 void Model::flagMine(int row, int col) {
-	grid[row][col].flagged = grid[row][col].explored;
-	
-	
-}
-
-void Model::clearFlag(int row, int col) {
-	
+	grid[row][col].flagged = !grid[row][col].flagged;
 }
 
 void Model::explore(int row, int col) {
-	grid[row][col].neighbors = grid[row][col].explored;
-	
+	grid[row][col].explored = true;
+	vector<Cell> adjacent = neighbors(row, col);
+	if (grid[row][col].neighbors > 0) {
+		return;
+	}
+	for (int i = 0; i < adjacent.size(); i++) {
+		if (adjacent[i].neighbors <= 1 && !adjacent[i].explored) {
+			explore(adjacent[i].row, adjacent[i].col);
+		}
+	}
 }
 
 // Checking whether all mines have been flagged

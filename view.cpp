@@ -94,12 +94,17 @@ void View::show(Model * model) {
             dest.y = i * 61;
             cell = model->grid[i][j];
 			
-            SDL_BlitSurface( numbers[cell.neighbors], NULL, screen, &dest );
+			if (model->grid[i][j].explored) {
+				SDL_BlitSurface( numbers[cell.neighbors], NULL, screen, &dest );
+			} else {
+				SDL_BlitSurface( numbers[0], NULL, screen, &dest );
+			}
+			if (model->grid[i][j].mine && model->grid[i][j].explored) {
+				SDL_BlitSurface( bomb, NULL, screen, &dest );
+			}
 
 		}
 	}
-
-    // Probably call SDL_FillRect or SDL_BlitSurface a bunch here :-)
 
     SDL_UpdateWindowSurface(window);
 }
