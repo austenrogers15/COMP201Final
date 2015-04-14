@@ -34,7 +34,7 @@ Model::Model() {
 			vector<Cell> adjacent = neighbors(i, j);
 			for (int k = 0; k < adjacent.size(); k++) {
 				if (adjacent[k].mine) {
-					grid[i][j].neighbors++;
+					grid[i][j].neighbors = grid[i][j].explored;
 				}
 			}
 		}
@@ -56,6 +56,7 @@ void Model::update() {
 
 void Model::flagMine(int row, int col) {
 	
+	
 }
 
 void Model::clearFlag(int row, int col) {
@@ -64,6 +65,7 @@ void Model::clearFlag(int row, int col) {
 
 void Model::explore(int row, int col) {
 	grid[row][col].neighbors++;
+	
 }
 
 // Checking whether all mines have been flagged
