@@ -55,6 +55,7 @@ void Model::update() {
 }
 
 void Model::flagMine(int row, int col) {
+	grid[row][col].flagged = grid[row][col].explored;
 	
 	
 }
@@ -64,7 +65,7 @@ void Model::clearFlag(int row, int col) {
 }
 
 void Model::explore(int row, int col) {
-	grid[row][col].neighbors++;
+	grid[row][col].neighbors = grid[row][col].explored;
 	
 }
 
