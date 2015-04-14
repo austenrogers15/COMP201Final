@@ -45,6 +45,7 @@ View::View(string title, int width, int height) {
 	numbers[8] = load("assets/8.png");
 	bomb = load("assets/Hit.png");
 	flag = load("assets/Flag.png");
+	unexplored = load("assets/9.png");
 //    music = Mix_LoadMUS("assets/2Inventions_-_Johaness_Gilther_-_Don_t_leave_me.mp3");
 //    if (music != NULL) {
 //       Mix_PlayMusic( music, -1 );
@@ -97,7 +98,7 @@ void View::show(Model * model) {
 			if (model->grid[i][j].explored) {
 				SDL_BlitSurface( numbers[cell.neighbors], NULL, screen, &dest );
 			} else {
-				SDL_BlitSurface( numbers[0], NULL, screen, &dest );
+				SDL_BlitSurface( unexplored, NULL, screen, &dest );
 			}
 			if (model->grid[i][j].mine && model->grid[i][j].explored) {
 				SDL_BlitSurface( bomb, NULL, screen, &dest );

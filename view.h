@@ -26,6 +26,7 @@ private:
 	SDL_Surface* numbers[9];
 	SDL_Surface* bomb;
 	SDL_Surface* flag;
+	SDL_Surface* unexplored;
 //    SDL_Surface* text;
 //    Mix_Music * music;
 //    Mix_Chunk * food;
