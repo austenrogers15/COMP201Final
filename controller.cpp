@@ -5,7 +5,7 @@ using namespace std;
 
 Controller::Controller() {
     model = new Model();
-    view = new View("Minesweeper", 1024, 768);
+    view = new View("Minesweeper", 488, 488);
 }
 
 Controller::~Controller() {
