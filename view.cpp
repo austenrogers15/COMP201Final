@@ -103,6 +103,9 @@ void View::show(Model * model) {
 			if (model->grid[i][j].mine && model->grid[i][j].explored) {
 				SDL_BlitSurface( bomb, NULL, screen, &dest );
 			}
+			if (model->grid[i][j].flagged) {
+				SDL_BlitSurface( flag, NULL, screen, &dest );
+			}
 
 		}
 	}
