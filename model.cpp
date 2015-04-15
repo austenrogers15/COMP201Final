@@ -76,7 +76,20 @@ void Model::explore(int row, int col) {
 
 // Checking whether all mines have been flagged
 bool Model::gameOver() {
-	// loop through the grid, assuming the game is over, unless shown otherwise.
-    return false;
+	bool result = false;
+	int flagged = 10;
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			if (grid[i][j].mine) {
+				if (grid[i][j].mine == grid[i][j].explored) {
+					return true;
+				}
+				if (grid[i][j].mine == grid[i][j].flagged) {
+					flagged --;
+				}
+			}
+		}
+	}
+	return false;
 }
 
