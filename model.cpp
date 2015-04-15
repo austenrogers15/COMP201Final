@@ -78,6 +78,7 @@ void Model::explore(int row, int col) {
 bool Model::gameOver() {
 	bool result = false;
 	int flagged = 10;
+	int b = 0;
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			if (grid[i][j].mine) {
@@ -85,11 +86,14 @@ bool Model::gameOver() {
 					return true;
 				}
 				if (grid[i][j].mine == grid[i][j].flagged) {
-					flagged --;
+					b++;
+				}
+				if (b == flagged) {
+					
 				}
 			}
 		}
 	}
-	return false;
+	return b;
 }
 
