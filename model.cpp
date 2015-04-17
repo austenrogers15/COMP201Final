@@ -94,6 +94,6 @@ bool Model::gameOver() {
 			}
 		}
 	}
-	return b;
+	result = true;
 }
 
