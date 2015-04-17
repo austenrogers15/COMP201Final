@@ -68,7 +68,7 @@ void Model::explore(int row, int col) {
 		return;
 	}
 	for (int i = 0; i < adjacent.size(); i++) {
-		if (adjacent[i].neighbors <= 1 && !adjacent[i].explored) {
+		if (adjacent[i].neighbors <= 8 && !adjacent[i].explored) {
 			explore(adjacent[i].row, adjacent[i].col);
 		}
 	}
@@ -88,7 +88,7 @@ bool Model::gameOver() {
 				if (grid[i][j].mine == grid[i][j].flagged) {
 					b++;
 				}
-				if (b == flagged) {
+				if (b == flagged - 1) {
 					
 				}
 			}
